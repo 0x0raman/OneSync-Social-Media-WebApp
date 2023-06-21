@@ -59,6 +59,14 @@ const MyPostWidget = ({ picturePath }) => {
     setPost("");
   };
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13 && !e.shiftKey) {
+      // Enter key pressed without Shift key
+      e.preventDefault(); // Prevent line break
+      handlePost(); // Call handlePost to submit the post
+    }
+  };
+
   return (
     <WidgetWrapper>
       <FlexBetween gap="1.5rem">
@@ -67,6 +75,7 @@ const MyPostWidget = ({ picturePath }) => {
           placeholder="What's on your mind..."
           onChange={(e) => setPost(e.target.value)}
           value={post}
+          onKeyDown={handleKeyDown} // Add onKeyDown event listener
           sx={{
             width: "100%",
             backgroundColor: palette.neutral.light,
