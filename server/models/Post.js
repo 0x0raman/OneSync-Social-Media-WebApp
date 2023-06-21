@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const postSchema = mongoose.Schema(
   {
     userId: {
@@ -16,7 +17,7 @@ const postSchema = mongoose.Schema(
     location: String,
     description: String,
     picturePath: String,
-    userPicturePath: String,
+    userPicturePath: String, // Added field to store the picture path of the logged-in user
     likes: {
       type: Map,
       of: Boolean,
@@ -28,5 +29,7 @@ const postSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
 const Post = mongoose.model("Post", postSchema);
+
 export default Post;

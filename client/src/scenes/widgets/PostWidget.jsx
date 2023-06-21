@@ -96,7 +96,7 @@ const PostWidget = ({
     userPicturePath: comment.userPicturePath, // Add the userPicturePath property from the original comment
     name: comment.name, // Add the name property from the original comment
   }));
-
+  const loggedInUserPicturePath = useSelector((state) => state.user.picturePath);
   return (
     <WidgetWrapper m="2rem 0">
       <Friend
@@ -175,10 +175,10 @@ const PostWidget = ({
 
           <Divider />
           <Box display="flex" alignItems="center" mt="0.5rem" sx={{ pl: "1rem" }}>
-            <Avatar
-              sx={{ width: 32, height: 32, mr: "0.5rem" }}
-              src={`http://localhost:3001/assets/${userPicturePath}`}
-            />
+          <Avatar
+            sx={{ width: 32, height: 32, mr: "0.5rem" }}
+            src={`http://localhost:3001/assets/${loggedInUserPicturePath}`}
+          />
             <InputBase
               value={comment}
               onChange={(e) => setComment(e.target.value)}
