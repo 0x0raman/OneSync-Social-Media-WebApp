@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   EditOutlined,
   DeleteOutlined,
@@ -21,8 +23,6 @@ import FlexBetween from "components/FlexBetween";
 import Dropzone from "react-dropzone";
 import UserImage from "components/UserImage";
 import WidgetWrapper from "components/WidgetWrapper";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 
 const MyPostWidget = ({ picturePath }) => {
@@ -51,8 +51,10 @@ const MyPostWidget = ({ picturePath }) => {
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
+
     const posts = await response.json();
-    dispatch(setPosts({ posts }));
+    const reversedPosts = posts.reverse(); // Reverse the order of posts
+    dispatch(setPosts({ posts: reversedPosts }));
     setImage(null);
     setPost("");
   };
