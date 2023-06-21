@@ -187,7 +187,7 @@ const PostWidget = ({
               fullWidth
               sx={{
                 borderRadius: "2rem",
-                backgroundColor: "#F0F2F5",
+                backgroundColor: palette.neutral.light,
                 py: "0.5rem",
                 pl: "1rem",
                 flexGrow: 1,
